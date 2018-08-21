@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.6.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/libs-release" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'accessing-gemfire-data-rest-api'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/libs-release" }
+}
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-gemfire")
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    runtime("org.springframework.shell:spring-shell:1.0.0.RELEASE")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
